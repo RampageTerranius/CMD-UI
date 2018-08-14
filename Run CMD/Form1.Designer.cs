@@ -29,10 +29,9 @@
 		private void InitializeComponent()
 		{
 			this.lblCommand = new System.Windows.Forms.Label();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.tboxCMD = new System.Windows.Forms.TextBox();
 			this.btnRunCMD = new System.Windows.Forms.Button();
-			this.cboxShowCMD = new System.Windows.Forms.CheckBox();
-			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.tboxOutput = new System.Windows.Forms.TextBox();
 			this.lblOutput = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
@@ -45,14 +44,14 @@
 			this.lblCommand.TabIndex = 0;
 			this.lblCommand.Text = "Command";
 			// 
-			// textBox1
+			// tboxCMD
 			// 
-			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.tboxCMD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox1.Location = new System.Drawing.Point(12, 25);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(760, 20);
-			this.textBox1.TabIndex = 1;
+			this.tboxCMD.Location = new System.Drawing.Point(12, 25);
+			this.tboxCMD.Name = "tboxCMD";
+			this.tboxCMD.Size = new System.Drawing.Size(760, 20);
+			this.tboxCMD.TabIndex = 1;
 			// 
 			// btnRunCMD
 			// 
@@ -64,27 +63,17 @@
 			this.btnRunCMD.UseVisualStyleBackColor = true;
 			this.btnRunCMD.Click += new System.EventHandler(this.btnRunCMD_Click);
 			// 
-			// cboxShowCMD
+			// tboxOutput
 			// 
-			this.cboxShowCMD.AutoSize = true;
-			this.cboxShowCMD.Location = new System.Drawing.Point(93, 55);
-			this.cboxShowCMD.Name = "cboxShowCMD";
-			this.cboxShowCMD.Size = new System.Drawing.Size(80, 17);
-			this.cboxShowCMD.TabIndex = 3;
-			this.cboxShowCMD.Text = "Show CMD";
-			this.cboxShowCMD.UseVisualStyleBackColor = true;
-			// 
-			// textBox2
-			// 
-			this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.tboxOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox2.Location = new System.Drawing.Point(12, 93);
-			this.textBox2.Multiline = true;
-			this.textBox2.Name = "textBox2";
-			this.textBox2.ReadOnly = true;
-			this.textBox2.Size = new System.Drawing.Size(760, 457);
-			this.textBox2.TabIndex = 4;
+			this.tboxOutput.Location = new System.Drawing.Point(12, 93);
+			this.tboxOutput.Multiline = true;
+			this.tboxOutput.Name = "tboxOutput";
+			this.tboxOutput.ReadOnly = true;
+			this.tboxOutput.Size = new System.Drawing.Size(760, 457);
+			this.tboxOutput.TabIndex = 4;
 			// 
 			// lblOutput
 			// 
@@ -102,10 +91,9 @@
 			this.BackColor = System.Drawing.SystemColors.Control;
 			this.ClientSize = new System.Drawing.Size(784, 562);
 			this.Controls.Add(this.lblOutput);
-			this.Controls.Add(this.textBox2);
-			this.Controls.Add(this.cboxShowCMD);
+			this.Controls.Add(this.tboxOutput);
 			this.Controls.Add(this.btnRunCMD);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.tboxCMD);
 			this.Controls.Add(this.lblCommand);
 			this.MinimumSize = new System.Drawing.Size(480, 320);
 			this.Name = "frmMain";
@@ -118,10 +106,9 @@
 		#endregion
 
 		private System.Windows.Forms.Label lblCommand;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox tboxCMD;
 		private System.Windows.Forms.Button btnRunCMD;
-		private System.Windows.Forms.CheckBox cboxShowCMD;
-		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.TextBox tboxOutput;
 		private System.Windows.Forms.Label lblOutput;
 	}
 }
