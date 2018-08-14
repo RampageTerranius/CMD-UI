@@ -52,6 +52,7 @@
 			this.tboxCMD.Name = "tboxCMD";
 			this.tboxCMD.Size = new System.Drawing.Size(760, 20);
 			this.tboxCMD.TabIndex = 1;
+			this.tboxCMD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnKeyPress);
 			// 
 			// btnRunCMD
 			// 
@@ -72,6 +73,7 @@
 			this.tboxOutput.Multiline = true;
 			this.tboxOutput.Name = "tboxOutput";
 			this.tboxOutput.ReadOnly = true;
+			this.tboxOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.tboxOutput.Size = new System.Drawing.Size(760, 457);
 			this.tboxOutput.TabIndex = 4;
 			// 

@@ -49,11 +49,13 @@ namespace Run_CMD
 		}
 
 		private LinkedList<string> output = new LinkedList<string>();
+		private LinkedList<string> outputData = new LinkedList<string>();
 
-		private const int MAX_OUTPUT_LENGTH = 25;
+		//how many lines will be allowed into the output box
+		private const int MAX_OUTPUT_LENGTH = 1000;
 
-		//on click of run CMD button
-		private void btnRunCMD_Click(object sender, EventArgs e)
+		//runs the command line
+		private void RunCMD()
 		{
 			Process process = new Process();
 			process.StartInfo = new ProcessStartInfo()
@@ -64,28 +66,50 @@ namespace Run_CMD
 				RedirectStandardError = true,
 				RedirectStandardInput = true,
 				CreateNoWindow = true
-			};	
-			
+			};
+
+			//prepare output
 			process.OutputDataReceived += processDataReceived;
 			process.ErrorDataReceived += processDataReceived;
 
+			//make sure the outputdata list is clear BEFORE we grab all the output from the command line
+			outputData.Clear();
+
+			//start the command line and begin outputting
 			process.Start();
 			process.BeginErrorReadLine();
 			process.BeginOutputReadLine();
 
+			//give the command line our arguments
 			process.StandardInput.WriteLine(tboxCMD.Text);
 			process.StandardInput.WriteLine("exit");
 
+			//wait for command line to exit
 			process.WaitForExit();
 
-			//wait for a little bit as the command line may have nto finished up yet
+			//wait for a little bit as the command line may have not finished up yet
 			System.Threading.Thread.Sleep(1000);
+
+			//clear up the unneeded lines from the output
+			for (int i = 3; i < outputData.Count - 3; i++)
+				output.AddLast(outputData.ElementAt(i));
 
 			tboxOutput.Text = "";
 
 			//output the text from the command line
-			foreach (string s in output)
-				tboxOutput.AppendText(s + "\r\n");
+			for (int i = output.Count-1; i >= 0; i--)
+				tboxOutput.AppendText(output.ElementAt(i) + "\r\n");
+
+			//makes sure we are always looking at the top most text after a command is run
+			tboxOutput.SelectionStart = 0;
+			tboxOutput.SelectionLength = 1;
+			tboxOutput.ScrollToCaret();
+		}
+
+		//on click of run CMD button
+		private void btnRunCMD_Click(object sender, EventArgs e)
+		{
+			RunCMD();
 		}
 
 		//event handler for output from command line
@@ -93,13 +117,15 @@ namespace Run_CMD
 		{
 			Process process = sender as Process;
 
-			if (process != null)
-			{
-				output.AddLast(e.Data);
+			if (process != null)			
+				outputData.AddFirst(e.Data);
+		}
 
-				if (output.Count > MAX_OUTPUT_LENGTH)
-					output.RemoveFirst();
-			}				
+		//hnadles when enter button is pressed while in command text box
+		private void OnKeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (e.KeyChar == (char)Keys.Enter)
+				RunCMD();
 		}
 	}
 }
